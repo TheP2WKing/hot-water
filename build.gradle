@@ -1,0 +1,75 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven { url = "https://files.minecraftforge.net/maven" }
+        maven { url = "https://plugins.gradle.org/m2/" }
+    }
+
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+    }
+}
+apply plugin: 'net.minecraftforge.gradle.forge'
+
+
+version = "1.12.2-1.0.0"
+group = "net.thep2wking.hotwater"
+archivesBaseName = "hotwater"
+
+sourceCompatibility = targetCompatibility = '1.8'
+compileJava {
+    sourceCompatibility = targetCompatibility = '1.8'
+}
+
+minecraft {
+    version = "1.12.2-14.23.5.2847"
+    runDir = "run"
+    mappings = "snapshot_20171003"
+    clientJvmArgs.add("-Xmx4G")
+    clientRunArgs.add("--username=Dev")
+    serverJvmArgs.add("-Xmx4G")
+    makeObfSourceJar = false
+}
+
+repositories {
+    maven {
+        url "https://cursemaven.com"
+    }
+}
+
+dependencies {
+    // reloadedlib
+    compile files("src/libs/reloadedlib-1.12.2-1.0.0.jar")
+
+    // jei
+    deobfCompile("curse.maven:jei-238222:4538010")
+    deobfCompile("curse.maven:jei-integration-265917:2951731")
+    deobfCompile("curse.maven:block-drops-jei-addon-244181:2509046")
+
+    // top
+    deobfCompile("curse.maven:the-one-probe-245211:2667280")
+    deobfCompile("curse.maven:top-addons-247111:2887479")
+
+    // ftb
+    deobfCompile("curse.maven:ftb-library-legacy-forge-237167:2985811")
+    deobfCompile("curse.maven:ftb-utilities-forge-237102:3157548")
+
+    // worldedit
+    deobfCompile("curse.maven:worldedit-225608:2941712")
+
+    // appleskin
+    deobfCompile("curse.maven:appleskin-248787:2987247")
+}
+
+processResources {
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
+
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+        expand 'version':project.version, 'mcversion':project.minecraft.version
+    }
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}

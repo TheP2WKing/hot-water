@@ -1,0 +1,13 @@
+[
+    {
+        "modid": "hotwater",
+        "name": "Hot Water Reloaded",
+        "description": "Adds more types of water and food into the game.",
+        "version": "${version}",
+        "mcversion": "${mcversion}",
+        "url": "https://github.com/TheP2WKing/hot-water",
+        "authorList": ["TheP2WKing"],
+        "credits": "sorazodia",
+        "dependencies": []
+    }
+]

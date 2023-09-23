@@ -1,0 +1,15 @@
+# creative tabs
+itemGroup.hotwater.name=Hot Water Reloaded
+
+# fluids
+tile.hotwater.hot_water.name=Hot Water
+fluid.hotwater.hot_water=Hot Water
+tile.hotwater.spring_water.name=Spring Water
+fluid.hotwater.spring_water=Spring Water
+tile.hotwater.superheated_lava.name=Superheated Lava
+fluid.hotwater.superheated_lava=Superheated Lava
+
+# items
+item.hotwater.boiled_flesh.name=Bolied Flesh
+item.hotwater.boiled_leather.name=Bolied Leather
+item.hotwater.detoxified_spider_eye.name=Detoxified Spider Eye
