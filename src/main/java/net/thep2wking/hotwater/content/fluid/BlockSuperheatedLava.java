@@ -15,6 +15,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.Fluid;
 import net.thep2wking.hotwater.HotWater;
+import net.thep2wking.hotwater.config.HotWaterConfig;
 import net.thep2wking.reloadedlib.api.fluid.ModBlockFluidBase;
 
 public class BlockSuperheatedLava extends ModBlockFluidBase {
@@ -27,23 +28,29 @@ public class BlockSuperheatedLava extends ModBlockFluidBase {
 	@Override
 	public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, IBlockState state, Entity entityIn) {
 		if (entityIn instanceof EntityLivingBase) {
-			entityIn.attackEntityFrom(DAMAGE_SOURCE, 20.0f);
+			entityIn.attackEntityFrom(DAMAGE_SOURCE, 18.0f);
 		}
 	}
 
 	@Override
 	public boolean canDisplace(IBlockAccess world, BlockPos pos) {
 		Block block = world.getBlockState(pos).getBlock();
-		if (block.isAir(world.getBlockState(pos), world, pos)) {
-			return true;
+		if (HotWaterConfig.ENABLE_SUPERHEATED_LAVA) {
+			if (block.isAir(world.getBlockState(pos), world, pos)) {
+				return true;
+			}
+			return block != this;
 		}
-		return block != this;
+		return block.isAir(world.getBlockState(pos), world, pos);
 	}
 
 	@Override
 	public boolean displaceIfPossible(World world, BlockPos pos) {
 		Block block = world.getBlockState(pos).getBlock();
-		return block != this;
+		if (HotWaterConfig.ENABLE_SUPERHEATED_LAVA) {
+			return block != this;
+		}
+		return block.isAir(world.getBlockState(pos), world, pos);
 	}
 
 	@Override
