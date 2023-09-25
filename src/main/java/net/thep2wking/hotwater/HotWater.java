@@ -19,7 +19,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.thep2wking.reloadedlib.util.ModFluidUtil;
 import net.thep2wking.reloadedlib.util.ModLogger;
 import net.thep2wking.hotwater.init.ModFluids;
-import net.thep2wking.hotwater.registry.ModBoilRegistry;
+import net.thep2wking.hotwater.registry.ModRecipes;
 import net.thep2wking.hotwater.registry.ModOreDict;
 import net.thep2wking.hotwater.registry.ModRegistry;
 import net.thep2wking.hotwater.util.proxy.CommonProxy;
@@ -31,10 +31,10 @@ public class HotWater {
     public static final String MC_VERSION = "1.12.2";
     public static final String NAME = "Hot Water Reloaded";
     public static final String VERSION = MC_VERSION + "-" + "1.0.0";
-    public static final String DEPENDENCIES = "required-after:forge@[14.23.5.2847,);required-after:reloadedlib@[1.12.2-1.0.0,);after:jei@[4.16.1.1000,);after:theoneprobe@[1.4.28,);";
+    public static final String DEPENDENCIES = "required-after:forge@[14.23.5.2847,);required-after:reloadedlib@[1.12.2-1.0.0,);after:jei@[4.16.1.1000,);after:theoneprobe@[1.4.28,);after:crafttweaker@[4,);";
     public static final String CLIENT_PROXY_CLASS = "net.thep2wking.hotwater.util.proxy.ClientProxy";
     public static final String SERVER_PROXY_CLASS = "net.thep2wking.hotwater.util.proxy.ServerProxy";
-
+    
     @Instance
     public static HotWater INSTANCE;
 
@@ -78,7 +78,7 @@ public class HotWater {
     public void init(FMLInitializationEvent event) {
         ModLogger.initLogger(MODID);
         ModOreDict.registerOreDict();
-        ModBoilRegistry.init();
+        ModRecipes.registerRecipes();
         PROXY.init(event);
     }
 

@@ -19,8 +19,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.Fluid;
 import net.thep2wking.hotwater.HotWater;
+import net.thep2wking.hotwater.api.BoilingRecipe;
+import net.thep2wking.hotwater.config.HotWaterConfig;
 import net.thep2wking.hotwater.init.ModBlocks;
-import net.thep2wking.hotwater.util.BoilRecipe;
 import net.thep2wking.reloadedlib.api.fluid.ModBlockFluidBase;
 
 public class BlockFluidHotWater extends ModBlockFluidBase {
@@ -37,25 +38,26 @@ public class BlockFluidHotWater extends ModBlockFluidBase {
             worldIn.playSound(null, pos.add(0.5, 0.5, 0.5), SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.AMBIENT,
                     0.5f, 2.6f + (worldIn.rand.nextFloat() - worldIn.rand.nextFloat()) * 0.8f);
         } else if (entityIn instanceof EntityItem && !worldIn.isRemote) {
-           this.cook(worldIn, pos, (EntityItem)entityIn);
+            if (HotWaterConfig.ENABLE_BOILING) {
+                this.cook(worldIn, pos, (EntityItem) entityIn);
+            }
         }
     }
 
     public void cook(World world, BlockPos pos, EntityItem entity) {
         EntityItem itemEntity = entity;
         ItemStack input = itemEntity.getItem();
-        for (int q = 0; q < BoilRecipe.size(); ++q) {
-            ItemStack itemStack = BoilRecipe.getInput(q);
-            boolean ignoreMeta = BoilRecipe.ignoreMetaData(q);
-            if (ignoreMeta) {
+        for (int q = 0; q < BoilingRecipe.size(); ++q) {
+            ItemStack itemStack = BoilingRecipe.getInput(q);
+            if (input.getItemDamage() <= input.getMaxDamage()) {
                 if (itemStack.getItem() != input.getItem())
                     continue;
-                this.boil(world, pos, itemEntity, BoilRecipe.getOutput(q), input.getCount());
+                this.boil(world, pos, itemEntity, BoilingRecipe.getOutput(q), input.getCount());
                 continue;
             }
-            if (itemStack.getItem() != input.getItem() || itemStack.getItemDamage() != input.getItemDamage())
+            if (itemStack.getItem() != input.getItem() || itemStack.getMetadata() != input.getMetadata())
                 continue;
-            this.boil(world, pos, itemEntity, BoilRecipe.getOutput(q), input.getCount());
+            this.boil(world, pos, itemEntity, BoilingRecipe.getOutput(q), input.getCount());
         }
     }
 
@@ -66,7 +68,7 @@ public class BlockFluidHotWater extends ModBlockFluidBase {
             amount *= output.getCount();
         }
         for (int q = 0; q < amount; ++q) {
-            itemEntity.entityDropItem(new ItemStack(output.getItem(), 1, output.getItemDamage()), 0.0f);
+            itemEntity.entityDropItem(new ItemStack(output.getItem(), 1, output.getMetadata()), 0.0f);
         }
         itemEntity.setDead();
     }
@@ -76,10 +78,12 @@ public class BlockFluidHotWater extends ModBlockFluidBase {
             @Nonnull Random random) {
         Material material;
         super.updateTick(world, pos, state, random);
-        if (random.nextInt(2) == 0 && world.getBlockState(pos.down(2)).getMaterial() == Material.LAVA
-                && ((material = world.getBlockState(pos.down(1)).getMaterial()) == Material.GROUND
-                        || material == Material.ROCK)) {
-            world.setBlockState(pos, ModBlocks.SPRING_WATER.getDefaultState());
+        if (HotWaterConfig.ENABLE_SPRING_WATER) {
+            if (random.nextInt(2) == 0 && world.getBlockState(pos.down(2)).getMaterial() == Material.LAVA
+                    && ((material = world.getBlockState(pos.down(1)).getMaterial()) == Material.GROUND
+                            || material == Material.ROCK)) {
+                world.setBlockState(pos, ModBlocks.SPRING_WATER.getDefaultState());
+            }
         }
     }
 
