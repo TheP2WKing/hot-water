@@ -10,18 +10,6 @@ tile.hotwater.superheated_lava.name=Superheated Lava
 fluid.hotwater.superheated_lava=Superheated Lava
 
 # items
-item.hotwater.boiled_leather.name=Boiled Leather
-item.hotwater.boiled_flesh.name=Boiled Flesh
-item.hotwater.boiled_clownfish.name=Boiled Clownfish
-item.hotwater.boiled_pufferfish.name=Boiled Pufferfish
+item.hotwater.boiled_flesh.name=Bolied Flesh
+item.hotwater.boiled_leather.name=Bolied Leather
 item.hotwater.detoxified_spider_eye.name=Detoxified Spider Eye
-
-# damage sources
-death.attack.hotwater.hot_water=%1$s boiled to death 
-death.attack.hotwater.hot_water.player=%1$s was perfectly steamed whilst trying to escape %2$s
-
-death.attack.hotwater.superheated_lava=%1$s melted
-death.attack.hotwater.superheated_lava.player=%1$s melted whilst trying to escape %2$s
-
-# jei
-jei.hotwater.boiling.category=Boiling

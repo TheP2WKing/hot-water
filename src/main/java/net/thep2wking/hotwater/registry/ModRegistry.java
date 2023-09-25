@@ -28,10 +28,8 @@ public class ModRegistry {
 	public static void onItemRegister(RegistryEvent.Register<Item> event) {
 		ModLogger.registeredItemsLogger(HotWater.MODID);
 
-		ModRegistryHelper.registerItem(event, ModItems.BOILED_LEATHER);
 		ModRegistryHelper.registerItem(event, ModItems.BOILED_FLESH);
-		ModRegistryHelper.registerItem(event, ModItems.BOLIED_CLOWNFISH);
-		ModRegistryHelper.registerItem(event, ModItems.BOLIED_PUFFERFISH);
+		ModRegistryHelper.registerItem(event, ModItems.BOILED_LEATHER);
 		ModRegistryHelper.registerItem(event, ModItems.DETOXIFIED_SPIDER_EYE);
 	}
 

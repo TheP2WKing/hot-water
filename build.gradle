@@ -35,10 +35,6 @@ repositories {
     maven {
         url "https://cursemaven.com"
     }
-    maven { 
-        url = 'https://maven.blamejared.com'
-        name = 'BlameJared Maven'
-    }
 }
 
 dependencies {
@@ -63,16 +59,6 @@ dependencies {
 
     // appleskin
     deobfCompile("curse.maven:appleskin-248787:2987247")
-
-    // crafttweaker
-    deobfCompile("curse.maven:mtlib-253211:3308160")
-    compileOnly("CraftTweaker2:CraftTweaker2-API:4.1.20.693") {
-        exclude module: "asm-debug-all"
-    }
-    deobfCompile("CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.693") {
-        exclude module: "asm-debug-all"
-    }
-
 }
 
 processResources {
