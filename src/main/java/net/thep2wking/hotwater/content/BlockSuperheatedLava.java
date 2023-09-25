@@ -1,4 +1,4 @@
-package net.thep2wking.hotwater.content.fluid;
+package net.thep2wking.hotwater.content;
 
 import java.util.Random;
 
