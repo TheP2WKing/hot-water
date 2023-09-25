@@ -18,10 +18,10 @@ import net.thep2wking.hotwater.HotWater;
 import net.thep2wking.hotwater.config.HotWaterConfig;
 import net.thep2wking.reloadedlib.api.fluid.ModBlockFluidBase;
 
-public class BlockSuperheatedLava extends ModBlockFluidBase {
+public class BlockFluidSuperheatedLava extends ModBlockFluidBase {
 	public static final DamageSource DAMAGE_SOURCE = new DamageSource(HotWater.MODID + ".superheated_lava");
 
-	public BlockSuperheatedLava(String modid, String name, Fluid fluid, Material material, MapColor mapColor) {
+	public BlockFluidSuperheatedLava(String modid, String name, Fluid fluid, Material material, MapColor mapColor) {
 		super(modid, name, fluid, material, mapColor);
 	}
 
