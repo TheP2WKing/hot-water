@@ -8,7 +8,6 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.UniversalBucket;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLLoadCompleteEvent;
@@ -35,7 +34,7 @@ public class HotWater {
     public static final String CLIENT_PROXY_CLASS = "net.thep2wking.hotwater.util.proxy.ClientProxy";
     public static final String SERVER_PROXY_CLASS = "net.thep2wking.hotwater.util.proxy.ServerProxy";
     
-    @Instance
+    @Mod.Instance(MODID)
     public static HotWater INSTANCE;
 
     @SidedProxy(clientSide = CLIENT_PROXY_CLASS, serverSide = SERVER_PROXY_CLASS)
