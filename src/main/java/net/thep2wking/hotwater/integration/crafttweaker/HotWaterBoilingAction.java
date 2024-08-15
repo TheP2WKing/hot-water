@@ -5,7 +5,7 @@ import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import net.minecraft.item.ItemStack;
 import net.thep2wking.hotwater.HotWater;
-import net.thep2wking.hotwater.api.BoilingRecipe;
+import net.thep2wking.hotwater.api.BoilingRecipeRegistry;
 
 abstract class HotWaterBoilingAction implements IAction {
     final ItemStack output;
@@ -31,7 +31,7 @@ abstract class HotWaterBoilingAction implements IAction {
 
         @Override
         public void apply() {
-            BoilingRecipe.register(this.input, this.output);
+            BoilingRecipeRegistry.addBoilingRecipe(this.input, this.output);
         }
 
         @Override

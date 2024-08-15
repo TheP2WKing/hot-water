@@ -54,6 +54,7 @@ public class HotWater {
     public void preInit(FMLPreInitializationEvent event) {
         ModLogger.preInitLogger(MODID);
         ModRegistry.registerFluids(event);
+        ModRecipes.registerBoilingRecipe();
         PROXY.preInit(event);
     }
 

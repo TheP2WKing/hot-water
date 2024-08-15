@@ -13,6 +13,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 import net.thep2wking.hotwater.HotWater;
 import net.thep2wking.hotwater.api.BoilingRecipe;
+import net.thep2wking.hotwater.api.BoilingRecipeRegistry;
+import net.thep2wking.hotwater.config.HotWaterConfig;
 import net.thep2wking.hotwater.init.ModFluids;
 
 public class BoilingRecipeWrapper implements IRecipeWrapper {
@@ -47,13 +49,16 @@ public class BoilingRecipeWrapper implements IRecipeWrapper {
 		return IRecipeWrapper.super.getTooltipStrings(mouseX, mouseY);
 	}
 
-    public static List<BoilingRecipeWrapper> getBoilingRecipes() {
-        List<BoilingRecipeWrapper> boilingRecipes = new ArrayList<>();
-        for (int i = 0; i < BoilingRecipe.size(); ++i) {
-            ItemStack input = BoilingRecipe.getInput(i);
-            ItemStack output = BoilingRecipe.getOutput(i);
-            boilingRecipes.add(new BoilingRecipeWrapper(output, new ItemStack(input.getItem(), 1, input.getMetadata())));
-        }
-        return boilingRecipes;
-    }
+	public static List<BoilingRecipeWrapper> getBoilingRecipes() {
+		List<BoilingRecipeWrapper> boilingRecipes = new ArrayList<>();
+		if (HotWaterConfig.CONTENT.BOILING) {
+			for (BoilingRecipe recipe : BoilingRecipeRegistry.getBoilingRecipes()) {
+				ItemStack input = recipe.getInput();
+				ItemStack output = recipe.getOutput();
+				boilingRecipes
+						.add(new BoilingRecipeWrapper(output, new ItemStack(input.getItem(), 1, input.getMetadata())));
+			}
+		}
+		return boilingRecipes;
+	}
 }

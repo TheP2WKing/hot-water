@@ -21,6 +21,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fluids.Fluid;
 import net.thep2wking.hotwater.HotWater;
 import net.thep2wking.hotwater.api.BoilingRecipe;
+import net.thep2wking.hotwater.api.BoilingRecipeRegistry;
 import net.thep2wking.hotwater.config.HotWaterConfig;
 import net.thep2wking.hotwater.init.ModBlocks;
 import net.thep2wking.oedldoedlcore.api.fluid.ModBlockFluidBase;
@@ -54,17 +55,17 @@ public class BlockFluidHotWater extends ModBlockFluidBase {
     public void cook(World world, BlockPos pos, EntityItem entity) {
         EntityItem itemEntity = entity;
         ItemStack input = itemEntity.getItem();
-        for (int q = 0; q < BoilingRecipe.size(); ++q) {
-            ItemStack itemStack = BoilingRecipe.getInput(q);
+        for (BoilingRecipe recipe : BoilingRecipeRegistry.getBoilingRecipes()) {
+            ItemStack itemStack = recipe.getInput();
             if (input.getItemDamage() <= input.getMaxDamage()) {
                 if (itemStack.getItem() != input.getItem())
                     continue;
-                this.boil(world, pos, itemEntity, BoilingRecipe.getOutput(q), input.getCount());
+                this.boil(world, pos, itemEntity, recipe.getOutput(), input.getCount());
                 continue;
             }
             if (itemStack.getItem() != input.getItem() || itemStack.getMetadata() != input.getMetadata())
                 continue;
-            this.boil(world, pos, itemEntity, BoilingRecipe.getOutput(q), input.getCount());
+            this.boil(world, pos, itemEntity, recipe.getOutput(), input.getCount());
         }
     }
 
@@ -95,7 +96,6 @@ public class BlockFluidHotWater extends ModBlockFluidBase {
             }
         }
     }
-
 
     @Override
     public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random random) {
