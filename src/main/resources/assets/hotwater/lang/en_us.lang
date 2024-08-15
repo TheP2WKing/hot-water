@@ -1,6 +1,9 @@
 # creative tabs
 itemGroup.hotwater.name=Hot Water Reloaded
 
+# join message
+join.hotwaterreloaded.message=Hot mods are in your area!
+
 # fluids
 tile.hotwater.hot_water.name=Hot Water
 fluid.hotwater.hot_water=Hot Water
@@ -25,6 +28,15 @@ death.attack.hotwater.superheated_lava.player=%1$s melted whilst trying to escap
 
 # jei
 jei.hotwater.boiling.category=Boiling
-jei.hotwater.hot_water_bucket.info=Will boil you to death if bath in it for too long. Items will not be destroyed when they come in contract with the hot water. Items can be cooked by throwing them into hot water.
-jei.hotwater.spring_water_bucket.info=Will remove all your status effects. Your health will also slowly regenerate at the cost of your hunger. Can be crafted by placing Hot Water on top of Stone with Lava under it, the Hot Water have a 50 percent chance per tick to change into Spring Water. 
-jei.hotwater.superheated_lava_bucket.info=Not many have obtained this liquid before. The few who had was found burned with a bottom-less hole next by them.\n\nWarning:\nDeals massive damage to entities and destroys any block that touches it!
+jei.hotwater.boiling.category.info1=Items or blocks must be dropped.
+jei.hotwater.spring_water.category=Spring Water
+jei.hotwater.spring_water.category.info1=Must be placed on top of each other.
+jei.hotwater.spring_water.category.info2=Any kind of stone can be used.
+jei.hotwater.spring_water.category.info3=Any kind of hot fluid can be used.
+
+item.hotwater.hot_water_bucket.jei1=Will boil you to death if bath in it for too long. Items will not be destroyed when they come in contract with the hot water. Items can be cooked by throwing them into hot water.
+fluid.hotwater.hot_water.jei1=Will boil you to death if bath in it for too long. Items will not be destroyed when they come in contract with the hot water. Items can be cooked by throwing them into hot water.
+item.hotwater.spring_water_bucket.jei1=Will remove all your status effects. Your health will also slowly regenerate at the cost of your hunger. Can be crafted by placing Hot Water on top of Stone with Lava under it, the Hot Water have a 25 percent chance per tick to change into Spring Water. 
+fluid.hotwater.spring_water.jei1=Will remove all your status effects. Your health will also slowly regenerate at the cost of your hunger. Can be crafted by placing Hot Water on top of Stone with Lava under it, the Hot Water have a 25 percent chance per tick to change into Spring Water. 
+item.hotwater.superheated_lava_bucket.jei1=Not many have obtained this liquid before. The few who had was found burned with a bottom-less hole next by them.\n\nWarning:\nDeals massive damage to entities and destroys any block that touches it!
+fluid.hotwater.superheated_lava.jei1=Not many have obtained this liquid before. The few who had was found burned with a bottom-less hole next by them.\n\nWarning:\nDeals massive damage to entities and destroys any block that touches it!

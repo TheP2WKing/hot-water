@@ -1,4 +1,4 @@
-package net.thep2wking.hotwater.integration.jei;
+package net.thep2wking.hotwater.integration.jei.boiling;
 
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.gui.IDrawable;
@@ -11,7 +11,7 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.util.ResourceLocation;
 import net.thep2wking.hotwater.HotWater;
 import net.thep2wking.hotwater.init.ModFluids;
-import net.thep2wking.reloadedlib.util.ModFluidUtil;
+import net.thep2wking.oedldoedlcore.util.ModFluidUtil;
 
 public class BoilingRecipeCategory implements IRecipeCategory<BoilingRecipeWrapper> {
 	public static final String UID = HotWater.MODID + "." + "boiling";
@@ -24,7 +24,7 @@ public class BoilingRecipeCategory implements IRecipeCategory<BoilingRecipeWrapp
 	public IDrawable icon;
 
 	public BoilingRecipeCategory(IGuiHelper guiHelper) {
-		background = guiHelper.drawableBuilder(BACKGROUND, 0, 0, 120, 34).addPadding(2, 0, 0, 0).build(); // 0 0 0 2
+		background = guiHelper.drawableBuilder(BACKGROUND, 0, 0, 122, 32).addPadding(0, 0, 0, 0).build();
 		icon = guiHelper.createDrawableIngredient(ModFluidUtil.addFluidBucket(ModFluids.HOT_WATER));
 	}
 
@@ -58,9 +58,9 @@ public class BoilingRecipeCategory implements IRecipeCategory<BoilingRecipeWrapp
 		IGuiItemStackGroup guiItemStacks = recipeLayout.getItemStacks();
 		IGuiFluidStackGroup guiFluidStacks = recipeLayout.getFluidStacks();
 		
-		guiFluidStacks.init(0, true, 45, 10, 16, 16, 1000, false, null);
-		guiItemStacks.init(0, false, 92, 9);
-		guiItemStacks.init(12, true, 8, 9);
+		guiItemStacks.init(0, true, 8, 7);
+		guiFluidStacks.init(1, true, 45, 8, 16, 16, 1000, false, null);
+		guiItemStacks.init(2, false, 92, 7);
 		guiItemStacks.set(ingredients);
 		guiFluidStacks.set(ingredients);
 	}

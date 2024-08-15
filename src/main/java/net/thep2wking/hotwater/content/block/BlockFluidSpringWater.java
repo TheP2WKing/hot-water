@@ -1,4 +1,4 @@
-package net.thep2wking.hotwater.content;
+package net.thep2wking.hotwater.content.block;
 
 import java.util.Random;
 
@@ -14,7 +14,8 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.Fluid;
-import net.thep2wking.reloadedlib.api.fluid.ModBlockFluidBase;
+import net.thep2wking.hotwater.config.HotWaterConfig;
+import net.thep2wking.oedldoedlcore.api.fluid.ModBlockFluidBase;
 
 public class BlockFluidSpringWater extends ModBlockFluidBase {
 	public BlockFluidSpringWater(String modid, String name, Fluid fluid, Material material, MapColor mapColor) {
@@ -37,11 +38,13 @@ public class BlockFluidSpringWater extends ModBlockFluidBase {
 
 	@Override
 	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random random) {
-		for (int l = 0; l < 4; ++l) {
-			double x = (float) pos.getX() + random.nextFloat();
-			double z = (float) pos.getZ() + random.nextFloat();
-			world.spawnParticle(EnumParticleTypes.WATER_BUBBLE, x, (double) pos.getY(), z, 0.0,
-					(double) random.nextFloat(), 0.0, new int[0]);
+		if (HotWaterConfig.CONTENT.SPRING_WATER_PARTICLES) {
+			for (int l = 0; l < 4; ++l) {
+				double x = (float) pos.getX() + random.nextFloat();
+				double z = (float) pos.getZ() + random.nextFloat();
+				world.spawnParticle(EnumParticleTypes.WATER_BUBBLE, x, (double) pos.getY(), z, 0.0,
+						(double) random.nextFloat(), 0.0, new int[0]);
+			}
 		}
 	}
 }

@@ -1,4 +1,4 @@
-package net.thep2wking.hotwater.content;
+package net.thep2wking.hotwater.content.block;
 
 import java.util.Random;
 
@@ -12,6 +12,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
@@ -22,13 +23,14 @@ import net.thep2wking.hotwater.HotWater;
 import net.thep2wking.hotwater.api.BoilingRecipe;
 import net.thep2wking.hotwater.config.HotWaterConfig;
 import net.thep2wking.hotwater.init.ModBlocks;
-import net.thep2wking.reloadedlib.api.fluid.ModBlockFluidBase;
+import net.thep2wking.oedldoedlcore.api.fluid.ModBlockFluidBase;
 
 public class BlockFluidHotWater extends ModBlockFluidBase {
     public static final DamageSource DAMAGE_SOURCE = new DamageSource(HotWater.MODID + ".hot_water");
 
     public BlockFluidHotWater(String modid, String name, Fluid fluid, Material material, MapColor mapColor) {
         super(modid, name, fluid, material, mapColor);
+        setTickRandomly(true);
     }
 
     @Override
@@ -38,8 +40,13 @@ public class BlockFluidHotWater extends ModBlockFluidBase {
             worldIn.playSound(null, pos.add(0.5, 0.5, 0.5), SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.AMBIENT,
                     0.5f, 2.6f + (worldIn.rand.nextFloat() - worldIn.rand.nextFloat()) * 0.8f);
         } else if (entityIn instanceof EntityItem && !worldIn.isRemote) {
-            if (HotWaterConfig.ENABLE_BOILING) {
-                this.cook(worldIn, pos, (EntityItem) entityIn);
+            EntityItem entityItem = (EntityItem) entityIn;
+            NBTTagCompound tag = entityItem.getEntityData();
+            if (!tag.getBoolean("ProcessedByHotWater")) {
+                if (HotWaterConfig.CONTENT.BOILING) {
+                    this.cook(worldIn, pos, entityItem);
+                    tag.setBoolean("ProcessedByHotWater", true);
+                }
             }
         }
     }
@@ -76,20 +83,23 @@ public class BlockFluidHotWater extends ModBlockFluidBase {
     @Override
     public void updateTick(@Nonnull World world, @Nonnull BlockPos pos, @Nonnull IBlockState state,
             @Nonnull Random random) {
-        Material material;
         super.updateTick(world, pos, state, random);
-        if (HotWaterConfig.ENABLE_SPRING_WATER) {
-            if (random.nextInt(2) == 0 && world.getBlockState(pos.down(2)).getMaterial() == Material.LAVA
-                    && ((material = world.getBlockState(pos.down(1)).getMaterial()) == Material.GROUND
-                            || material == Material.ROCK)) {
-                world.setBlockState(pos, ModBlocks.SPRING_WATER.getDefaultState());
+        if (HotWaterConfig.CONTENT.SPRING_WATER && HotWaterConfig.CONTENT.SPRING_WATER_CREATION) {
+            if (world.getBlockState(pos.down(2)).getMaterial() == Material.LAVA
+                    && world.getBlockState(pos.down(1)).getMaterial() == Material.ROCK) {
+                if (random.nextInt(4) == 0) {
+                    world.setBlockState(pos, ModBlocks.SPRING_WATER.getDefaultState());
+                    world.playSound(null, pos, SoundEvents.BLOCK_LAVA_EXTINGUISH, SoundCategory.AMBIENT, 0.5f,
+                            1.6f + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.8f);
+                }
             }
         }
     }
 
+
     @Override
     public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random random) {
-        if (random.nextInt(2) == 0) {
+        if (random.nextInt(2) == 0 && HotWaterConfig.CONTENT.HOT_WATER_PARTICLES) {
             for (int l = 0; l < 2; ++l) {
                 double x = (float) pos.getX() + random.nextFloat();
                 double y = (double) pos.getY() + 1.2;

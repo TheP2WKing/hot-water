@@ -4,9 +4,9 @@ import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraftforge.fluids.BlockFluidClassic;
 import net.thep2wking.hotwater.HotWater;
-import net.thep2wking.hotwater.content.BlockFluidHotWater;
-import net.thep2wking.hotwater.content.BlockFluidSpringWater;
-import net.thep2wking.hotwater.content.BlockFluidSuperheatedLava;
+import net.thep2wking.hotwater.content.block.BlockFluidHotWater;
+import net.thep2wking.hotwater.content.block.BlockFluidSpringWater;
+import net.thep2wking.hotwater.content.block.BlockFluidSuperheatedLava;
 
 public class ModBlocks {
 	public static final BlockFluidClassic HOT_WATER = new BlockFluidHotWater(HotWater.MODID, "hot_water", ModFluids.HOT_WATER, Material.WATER, MapColor.WATER);

@@ -2,19 +2,27 @@ package net.thep2wking.hotwater.registry;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.thep2wking.reloadedlib.util.ModLogger;
-import net.thep2wking.reloadedlib.util.ModRegistryHelper;
+import net.thep2wking.oedldoedlcore.util.ModLogger;
+import net.thep2wking.oedldoedlcore.util.ModRegistryHelper;
 import net.thep2wking.hotwater.HotWater;
 import net.thep2wking.hotwater.init.ModBlocks;
 import net.thep2wking.hotwater.init.ModFluids;
 import net.thep2wking.hotwater.init.ModItems;
+import net.thep2wking.hotwater.util.render.ModRenderer;
 
 @Mod.EventBusSubscriber
 public class ModRegistry {
+	@SubscribeEvent
+	public static void onModelRegister(ModelRegistryEvent event) {
+		ModRegistryHelper.registerModels(event, HotWater.MODID);
+		ModRenderer.registerFluidRenderer();
+	}
+
 	@SubscribeEvent
 	public static void onBlockRegister(RegistryEvent.Register<Block> event) {
 		ModLogger.registeredBlocksLogger(HotWater.MODID);
