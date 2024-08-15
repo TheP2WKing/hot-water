@@ -14,8 +14,13 @@ out
 .idea
 
 # gradle
+out
 build
+classes
 .gradle
+
+# macos
+*.DS_Store
 
 # other
 eclipse

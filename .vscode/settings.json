@@ -4,15 +4,19 @@
         "!json",
         "!markdown"
     ],
+    "terminal.integrated.defaultProfile.windows": "Command Prompt",
+    "redhat.telemetry.enabled": false,
     "java.configuration.updateBuildConfiguration": "automatic",
     "java.dependency.packagePresentation": "hierarchical",
-    "terminal.integrated.defaultProfile.windows": "Command Prompt",
+    "java.debug.settings.vmArgs": "-Xlog:jni+resolve=off",
     "[java]": {
         "editor.defaultFormatter": "redhat.java",
         "editor.insertSpaces": false,
         "editor.tabSize": 4,
+        "editor.accessibilityPageSize": 20,
         "editor.detectIndentation": true
     },
     "java.jdt.ls.vmargs": " -Xmx10G -Xms256m",
-    "java.compile.nullAnalysis.mode": "automatic"
+    "java.compile.nullAnalysis.mode": "disabled",
+    "java.gradle.buildServer.enabled": "off"
 }

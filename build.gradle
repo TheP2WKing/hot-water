@@ -12,9 +12,9 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle.forge'
 
 
-version = "1.12.2-1.0.0"
-group = "net.thep2wking.hotwater"
-archivesBaseName = "hotwater"
+version = "${minecraft_version}-${version}"
+group = "${group}"
+archivesBaseName = "${modid}"
 
 sourceCompatibility = targetCompatibility = '1.8'
 compileJava {
@@ -22,9 +22,9 @@ compileJava {
 }
 
 minecraft {
-    version = "1.12.2-14.23.5.2847"
+    version = "${minecraft_version}-${forge_version}"
     runDir = "run"
-    mappings = "snapshot_20171003"
+    mappings = "${forge_mappings}"
     clientJvmArgs.add("-Xmx4G")
     clientRunArgs.add("--username=Dev")
     serverJvmArgs.add("-Xmx4G")
@@ -36,23 +36,23 @@ repositories {
         url "https://cursemaven.com"
     }
     maven { 
-        url = 'https://maven.blamejared.com'
-        name = 'BlameJared Maven'
+        url "https://maven.blamejared.com"
     }
 }
 
 dependencies {
-    // reloadedlib
-    compile files("src/libs/reloadedlib-1.12.2-1.0.0.jar")
+    // oedldoedlcore
+    compile files("src/libs/oedldoedlcore-1.12.2-4.2.0.jar")
 
     // jei
     deobfCompile("curse.maven:jei-238222:4538010")
     deobfCompile("curse.maven:jei-integration-265917:2951731")
-    deobfCompile("curse.maven:block-drops-jei-addon-244181:2509046")
+    deobfCompile("curse.maven:just-enough-resources-jer-240630:4440935")
 
     // top
     deobfCompile("curse.maven:the-one-probe-245211:2667280")
     deobfCompile("curse.maven:top-addons-247111:2887479")
+    deobfCompile("curse.maven:top-extras-628618:3813089")
 
     // ftb
     deobfCompile("curse.maven:ftb-library-legacy-forge-237167:2985811")
@@ -61,18 +61,14 @@ dependencies {
     // worldedit
     deobfCompile("curse.maven:worldedit-225608:2941712")
 
-    // appleskin
-    deobfCompile("curse.maven:appleskin-248787:2987247")
-
     // crafttweaker
     deobfCompile("curse.maven:mtlib-253211:3308160")
-    compileOnly("CraftTweaker2:CraftTweaker2-API:4.1.20.693") {
+    compileOnly("CraftTweaker2:CraftTweaker2-API:4.1.20.699") {
         exclude module: "asm-debug-all"
     }
-    deobfCompile("CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.693") {
+    deobfCompile("CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.699") {
         exclude module: "asm-debug-all"
     }
-
 }
 
 processResources {
