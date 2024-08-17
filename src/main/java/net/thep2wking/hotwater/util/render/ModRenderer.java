@@ -8,6 +8,6 @@ public class ModRenderer {
     public static void registerFluidRenderer() {
 		ModFluidUtil.addRenderForFluid(HotWater.MODID, "hot_water", ModBlocks.HOT_WATER);
 		ModFluidUtil.addRenderForFluid(HotWater.MODID, "spring_water", ModBlocks.SPRING_WATER);
-		ModFluidUtil.addRenderForFluid(HotWater.MODID, "superheated_lava", ModBlocks.SUPERHEATED_LAVA);
+		ModFluidUtil.addRenderForFluid(HotWater.MODID, "superheated_lava_hw", ModBlocks.SUPERHEATED_LAVA);
     }
 }

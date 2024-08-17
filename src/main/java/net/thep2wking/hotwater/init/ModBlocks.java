@@ -11,5 +11,5 @@ import net.thep2wking.hotwater.content.block.BlockFluidSuperheatedLava;
 public class ModBlocks {
 	public static final BlockFluidClassic HOT_WATER = new BlockFluidHotWater(HotWater.MODID, "hot_water", ModFluids.HOT_WATER, Material.WATER, MapColor.WATER);
 	public static final BlockFluidClassic SPRING_WATER = new BlockFluidSpringWater(HotWater.MODID, "spring_water", ModFluids.SPRING_WATER, Material.WATER, MapColor.WATER);
-	public static final BlockFluidClassic SUPERHEATED_LAVA = new BlockFluidSuperheatedLava(HotWater.MODID, "superheated_lava", ModFluids.SUPERHEATED_LAVA, Material.LAVA, MapColor.RED);
+	public static final BlockFluidClassic SUPERHEATED_LAVA = new BlockFluidSuperheatedLava(HotWater.MODID, "superheated_lava_hw", ModFluids.SUPERHEATED_LAVA, Material.LAVA, MapColor.RED);
 }

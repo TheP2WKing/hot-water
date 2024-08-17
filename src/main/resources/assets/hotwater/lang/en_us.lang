@@ -9,8 +9,8 @@ tile.hotwater.hot_water.name=Hot Water
 fluid.hotwater.hot_water=Hot Water
 tile.hotwater.spring_water.name=Spring Water
 fluid.hotwater.spring_water=Spring Water
-tile.hotwater.superheated_lava.name=Superheated Lava
-fluid.hotwater.superheated_lava=Superheated Lava
+tile.hotwater.superheated_lava_hw.name=Superheated Lava
+fluid.hotwater.superheated_lava_hw=Superheated Lava
 
 # items
 item.hotwater.boiled_leather.name=Boiled Leather

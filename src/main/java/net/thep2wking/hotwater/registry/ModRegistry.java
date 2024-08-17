@@ -5,7 +5,6 @@ import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.thep2wking.oedldoedlcore.util.ModLogger;
 import net.thep2wking.oedldoedlcore.util.ModRegistryHelper;
@@ -43,7 +42,9 @@ public class ModRegistry {
 		ModRegistryHelper.registerItem(event, ModItems.DETOXIFIED_SPIDER_EYE);
 	}
 
-	public static void registerFluids(FMLPreInitializationEvent event) {
+	public static void registerFluids() {
+		ModLogger.registeredFluidsLogger(HotWater.MODID);
+
         ModRegistryHelper.registerFluid(ModFluids.HOT_WATER);
 		ModRegistryHelper.registerFluid(ModFluids.SPRING_WATER);
 		ModRegistryHelper.registerFluid(ModFluids.SUPERHEATED_LAVA);

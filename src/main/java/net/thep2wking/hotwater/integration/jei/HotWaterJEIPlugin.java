@@ -50,14 +50,17 @@ public class HotWaterJEIPlugin extends ModJEIPluginBase {
 			addFluidStackInfo(registry, new FluidStack(ModFluids.SUPERHEATED_LAVA, 1000), "superheated_lava");
 
 			if (HotWaterConfig.CONTENT.BOILING) {
-				addRecipeCatalyst(registry, ModFluidUtil.addFluidBucket(ModFluids.HOT_WATER),BoilingRecipeCategory.UID);
+				addRecipeCatalyst(registry, ModFluidUtil.addFluidBucket(ModFluids.HOT_WATER),
+						BoilingRecipeCategory.UID);
 				addRecipes(registry, BoilingRecipeWrapper.getBoilingRecipes(), BoilingRecipeCategory.UID);
 			}
 
 			if (HotWaterConfig.CONTENT.SPRING_WATER && HotWaterConfig.CONTENT.SPRING_WATER_CREATION) {
-				addRecipeCatalyst(registry, ModFluidUtil.addFluidBucket(ModFluids.HOT_WATER),SpringWaterRecipeCategory.UID);
+				addRecipeCatalyst(registry, ModFluidUtil.addFluidBucket(ModFluids.HOT_WATER),
+						SpringWaterRecipeCategory.UID);
 				addRecipeCatalyst(registry, new ItemStack(Blocks.STONE), SpringWaterRecipeCategory.UID);
-				addRecipeCatalyst(registry, ModFluidUtil.addFluidBucket(FluidRegistry.LAVA),SpringWaterRecipeCategory.UID);
+				addRecipeCatalyst(registry, ModFluidUtil.addFluidBucket(FluidRegistry.LAVA),
+						SpringWaterRecipeCategory.UID);
 				addRecipes(registry, SpringWaterRecipeWrapper.getSpringWaterRecipes(), SpringWaterRecipeCategory.UID);
 			}
 		}

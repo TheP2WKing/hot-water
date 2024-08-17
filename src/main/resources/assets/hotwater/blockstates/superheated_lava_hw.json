@@ -3,7 +3,7 @@
     "variants": {
         "fluid": {
             "model": "forge:fluid",
-            "custom": { "fluid": "superheated_lava" }
+            "custom": { "fluid": "superheated_lava_hw" }
             }
     }        
 }
