@@ -9,7 +9,7 @@ public class ClientProxy extends CommonProxy {
 		super.preInit(event);
 	}
 
-	public void Init(FMLInitializationEvent event) {
+	public void init(FMLInitializationEvent event) {
 		super.init(event);
 	}
 
