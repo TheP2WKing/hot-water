@@ -29,8 +29,9 @@ import net.thep2wking.oedldoedlcore.api.fluid.ModBlockFluidBase;
 public class BlockFluidHotWater extends ModBlockFluidBase {
     public static final DamageSource DAMAGE_SOURCE = new DamageSource(HotWater.MODID + ".hot_water");
 
-    public BlockFluidHotWater(String modid, String name, Fluid fluid, Material material, MapColor mapColor) {
-        super(modid, name, fluid, material, mapColor);
+    public BlockFluidHotWater(String modid, String name, Fluid fluid, int fogColor, Material material,
+            MapColor mapColor) {
+        super(modid, name, fluid, fogColor, material, mapColor);
         setTickRandomly(true);
     }
 
